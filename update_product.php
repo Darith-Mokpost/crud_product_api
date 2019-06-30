@@ -6,7 +6,7 @@
 
 	$_POST['pid'] = 1;
 	$_POST['name'] = "test1";
-	$_POST['price'] = 260;
+	$_POST['price'] = 2760;
 	$_POST['description'] = "test1";
 
 	// json response array

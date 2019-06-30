@@ -22,7 +22,7 @@ class DB_Functions {
      */
     public function createProduct($name, $price, $description) {
 
-        $stmt = $this->conn->prepare("INSERT INTO products(name, price, description, created_at) VALUES(?, ?, ?, ?, NOW())");
+        $stmt = $this->conn->prepare("INSERT INTO products(name, price, description, created_at) VALUES(?, ?, ?, NOW())");
         $stmt->bind_param("sds", $name, $price, $description);
         $result = $stmt->execute();
         $stmt->close();
@@ -89,14 +89,19 @@ class DB_Functions {
     public function updateProduct($pid, $name, $price, $description) {
 
         $stmt = $this->conn->prepare("UPDATE products SET name = ?, price = ?, description = ?, updated_at = NOW() WHERE pid = ?");
-
         $stmt->bind_param("isds", $pid, $name, $price, $description);
+        $result = $stmt->execute();
 
-        if ($stmt->execute()) {
+        // check for successful create
+        if ($result) {
+            $stmt = $this->conn->prepare("SELECT * FROM products WHERE pid = ?");
+            $stmt->bind_param("i", $pid);
+            $stmt->execute();
+            $product = $stmt->get_result()->fetch_assoc();
             $stmt->close();
-            return true;
-        }else {
-            $stmt->close();
+
+            return $product;
+        } else {
             return false;
         }
 
