@@ -4,7 +4,7 @@
 	require_once 'include/DB_Functions.php';
 	$db = new DB_Functions();
 
-	$_POST['pid'] = 1;
+	$_POST['pid'] = 4;
 	$_POST['name'] = "test1";
 	$_POST['price'] = 2760;
 	$_POST['description'] = "test1";
@@ -44,16 +44,6 @@
             echo json_encode($response);
         }
 
-	    // if ($db->updateProduct($pid, $name, $price, $description)) {
-	    // 	// successfully updated
-	    //     $response["success"] = 1;
-	    //     $response["message"] = "Product successfully updated.";
-	    //     // echoing JSON response
-     //    	echo json_encode($response);
-     //    }else {
-     //    	$response["success"] = 0;
-	    // 	$response["message"] = "Product update not success!.";
-     //    }
 	}else {
 	    // required field is missing
 	    $response["success"] = 0;

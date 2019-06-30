@@ -70,7 +70,7 @@ class DB_Functions {
      */
     public function deleteProduct($pid) {
         
-        $stmt = $this->conn->prepare("DELETE FROM products WHERE pid = ?");
+        $stmt = $this->conn->prepare("DELETE FROM products WHERE pid = ? ");
         $stmt->bind_param("i", $pid);
         if ($stmt->execute()) {
             $stmt->close();
@@ -88,11 +88,11 @@ class DB_Functions {
      */
     public function updateProduct($pid, $name, $price, $description) {
 
-        $stmt = $this->conn->prepare("UPDATE products SET name = ?, price = ?, description = ?, updated_at = NOW() WHERE pid = ?");
-        $stmt->bind_param("isds", $pid, $name, $price, $description);
+        $stmt = $this->conn->prepare("UPDATE products SET name = '$name', price = '$price', description = '$description', updated_at = NOW() WHERE pid = '$pid'");
+        
         $result = $stmt->execute();
 
-        // check for successful create
+        // check for successful update
         if ($result) {
             $stmt = $this->conn->prepare("SELECT * FROM products WHERE pid = ?");
             $stmt->bind_param("i", $pid);
@@ -127,7 +127,7 @@ class DB_Functions {
      * Display all product
      */
     public function displayAllProducts() {
-        $sql = "SELECT * FROM products";
+        $sql = "SELECT * FROM products WHERE 1";
         $stmt = mysqli_query($this->conn, $sql);
         
         return $stmt;
