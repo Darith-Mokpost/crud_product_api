@@ -4,10 +4,10 @@
 	require_once 'include/DB_Functions.php';
 	$db = new DB_Functions();
 
-	$_POST['pid'] = 4;
-	$_POST['name'] = "test1";
-	$_POST['price'] = 2760;
-	$_POST['description'] = "test1";
+	$_POST['pid'] = 6;
+	$_POST['name'] = "test3";
+	$_POST['price'] = 380;
+	$_POST['description'] = "test3";
 
 	// json response array
 	$response = array("success" => 0);

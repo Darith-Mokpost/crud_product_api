@@ -9,9 +9,9 @@
 	/**
 	 *	test to create product
 	 */
-	$_POST['name'] = "test1";
-	$_POST['price'] = 150;
-	$_POST['description'] = "test1";
+	$_POST['name'] = "test2";
+	$_POST['price'] = 350;
+	$_POST['description'] = "test2";
 
 	if (isset($_POST['name']) && isset($_POST['price']) && isset($_POST['description'])) {
 

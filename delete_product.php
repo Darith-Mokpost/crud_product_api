@@ -6,7 +6,7 @@
 	/**
 	 *	test to delete product
 	 */
-	$_POST['pid'] = 2;
+	$_POST['pid'] = 4;
 
 	// json response array
 	$response = array("success" => 0);

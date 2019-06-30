@@ -70,14 +70,11 @@ class DB_Functions {
      */
     public function deleteProduct($pid) {
         
-        $stmt = $this->conn->prepare("DELETE FROM products WHERE pid = ? ");
-        $stmt->bind_param("i", $pid);
+        $stmt = $this->conn->prepare("DELETE FROM products WHERE pid = '$pid'");
         if ($stmt->execute()) {
-            $stmt->close();
             return true;
 
         }else {
-            $stmt->close();
             return false;
         }
         
